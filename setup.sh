@@ -151,7 +151,8 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "#$ALIAS $IP:55002 $PRIVKEY txid index" >> wagerr.conf_TEMP
   echo -e "$ALIAS $IP:55002 $PRIVKEY txid index"
   sudo ufw allow $PORT/tcp
-  unzip  bootstrap.zip -d -o $CONF_DIR
+  rm -rf $CONF_DIR/*
+  unzip  bootstrap.zip -d $CONF_DIR
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
   sh ~/bin/wagerrd_$ALIAS.sh
