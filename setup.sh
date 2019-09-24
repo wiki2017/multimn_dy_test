@@ -101,7 +101,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   #echo "Enter port for node $ALIAS"
   #read PORT
   
-  PORT=(55001+$i)
+  PORT=(5500$i)
 
   #echo ""
   #echo "Enter masternode private key for node $ALIAS"
@@ -140,10 +140,10 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "port=$PORT" >> wagerr.conf_TEMP
   
   sh ~/bin/wagerrd_$ALIAS.sh
-  sleep 30
+  sleep 60
   PRIVKEY=$(sh ~/bin/wagerr-cli_$ALIAS.sh createmasternodekey)
   sh ~/bin/wagerr-cli_$ALIAS.sh stop
-  sleep 5
+  sleep 10
   
   echo "masternode=1" >> wagerr.conf_TEMP
   echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
