@@ -101,7 +101,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   #echo "Enter port for node $ALIAS"
   #read PORT
   
-  PORT=(5500$i)
+  PORT=(550$i0)
 
   #echo ""
   #echo "Enter masternode private key for node $ALIAS"
