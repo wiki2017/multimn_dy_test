@@ -97,11 +97,11 @@ for i in `seq 1 1 $MNCOUNT`; do
   
   ALIAS=$(hostname)$i
 
-  #echo ""
-  #echo "Enter port for node $ALIAS"
-  #read PORT
+  echo ""
+  echo "Enter port for node $ALIAS"
+  read PORT
   
-  PORT=(550$i0)
+  
 
   #echo ""
   #echo "Enter masternode private key for node $ALIAS"
