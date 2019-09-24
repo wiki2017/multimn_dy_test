@@ -21,8 +21,8 @@ if [ $DOSETUP = "y" ]
 then
  
 apt-get update -y
-DEBIAN_FRONTEND=noninteractive apt-get update 
-DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade
+#DEBIAN_FRONTEND=noninteractive apt-get update 
+#DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade
 apt install -y software-properties-common 
 apt-add-repository -y ppa:bitcoin/bitcoin 
 apt-get update -y
@@ -91,17 +91,21 @@ read MNCOUNT
 
 
 for i in `seq 1 1 $MNCOUNT`; do
-  echo ""
-  echo "Enter alias for new node"
-  read ALIAS  
+  #echo ""
+  #echo "Enter alias for new node"
+  #read ALIAS 
+  
+  ALIAS=$(hostname)$i
 
-  echo ""
-  echo "Enter port for node $ALIAS"
-  read PORT
+  #echo ""
+  #echo "Enter port for node $ALIAS"
+  #read PORT
+  
+  PORT=(55001+$i)
 
-  echo ""
-  echo "Enter masternode private key for node $ALIAS"
-  read PRIVKEY
+  #echo ""
+  #echo "Enter masternode private key for node $ALIAS"
+  #read PRIVKEY
 
   RPCPORT=$(($PORT*10))
   echo "The RPC port is $RPCPORT"
@@ -119,7 +123,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   chmod 755 ~/bin/wagerr*.sh
 
   mkdir -p $CONF_DIR
-  unzip  bootstrap.zip -d $CONF_DIR
+  
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> wagerr.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> wagerr.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> wagerr.conf_TEMP
@@ -129,15 +133,25 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "daemon=1" >> wagerr.conf_TEMP
   echo "logtimestamps=1" >> wagerr.conf_TEMP
   echo "maxconnections=256" >> wagerr.conf_TEMP
-  echo "masternode=1" >> wagerr.conf_TEMP
+  
   echo "" >> wagerr.conf_TEMP
 
   echo "" >> wagerr.conf_TEMP
   echo "port=$PORT" >> wagerr.conf_TEMP
+  
+  sh ~/bin/wagerrd_$ALIAS.sh
+  sleep 30
+  PRIVKEY=$(sh ~/bin/wagerr-cli_$ALIAS.sh createmasternodekey)
+  sh ~/bin/wagerr-cli_$ALIAS.sh stop
+  sleep 5
+  
+  echo "masternode=1" >> wagerr.conf_TEMP
   echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
+  echo "#$ALIAS $IP:55002 $PRIVKEY txid index" >> wagerr.conf_TEMP
+  echo -e "$ALIAS $IP:55002 $PRIVKEY txid index"
   sudo ufw allow $PORT/tcp
-
+  unzip  bootstrap.zip -do $CONF_DIR
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
   sh ~/bin/wagerrd_$ALIAS.sh
