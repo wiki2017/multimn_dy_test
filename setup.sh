@@ -140,8 +140,10 @@ for i in `seq 1 1 $MNCOUNT`; do
 
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
-  #sh ~/bin/wagerrd_$ALIAS.sh
+  sh ~/bin/wagerrd_$ALIAS.sh
   
+  
+  function configure_systemd() {
   cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
 [Unit]
 Description=wagerr_$ALIAS service
@@ -151,8 +153,8 @@ User=root
 Group=root
 Type=forking
 PIDFile=$CONF_DIR/$wagerr_$ALIAS.pid
-ExecStart=./$CONF_DIR/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
-ExecStop=./$CONF_DIR/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
+ExecStart=$CONF_DIR/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
+ExecStop=$CONF_DIR/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
@@ -164,9 +166,19 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-  sleep 3
+  sleep 5
   systemctl start wagerr_$ALIAS.service
   systemctl enable wagerr_$ALIAS.service
+  
+  if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
+    echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
+    echo -e "${GREEN}systemctl start $COIN_NAME.service"
+    echo -e "systemctl status $COIN_NAME.service"
+    echo -e "less /var/log/syslog${NC}"
+    exit 1
+  fi
+}
 
+configure_systemd
   
 done
