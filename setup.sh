@@ -151,8 +151,8 @@ User=root
 Group=root
 Type=forking
 #PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
-ExecStart=sh ~/bin/wagerrd_$ALIAS.sh
-ExecStop=sh ~/bin/wagerr-cli_$ALIAS.sh stop
+ExecStart=$CONF_DIR/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
+ExecStop=-$CONF_DIR/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
