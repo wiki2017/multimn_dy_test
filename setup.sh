@@ -150,7 +150,7 @@ After=network.target
 User=root
 Group=root
 Type=forking
-#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
+PIDFile=$CONF_DIR/$wagerr_$ALIAS.pid
 ExecStart=$CONF_DIR/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
 ExecStop=-$CONF_DIR/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
 Restart=always
