@@ -166,13 +166,7 @@ EOF
   systemctl daemon-reload
   sleep 3
   systemctl start wagerr_$ALIAS.service
-  systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
+  systemctl enable wagerr_$ALIAS.service
 
-  if [[ -z "$(ps axo cmd:100 | egrep wagerrd_$ALIAS)" ]]; then
-    echo -e "${RED}wagerr_$ALIAS is not running${NC}, please investigate. You should start by running the following commands as root:"
-    echo -e "${GREEN}systemctl start wagerr_$ALIAS.service"
-    echo -e "systemctl status wagerr_$ALIAS.service"
-    echo -e "less /var/log/syslog${NC}"
-    exit 1
-  fi
+  
 done
