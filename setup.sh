@@ -151,8 +151,8 @@ User=root
 Group=root
 Type=forking
 PIDFile=$CONF_DIR/$wagerr_$ALIAS.pid
-ExecStart=$CONF_DIR/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
-ExecStop=-$CONF_DIR/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
+ExecStart=wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
+ExecStop=wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
