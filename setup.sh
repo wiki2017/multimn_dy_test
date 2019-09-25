@@ -140,7 +140,7 @@ for i in `seq 1 1 $MNCOUNT`; do
 
   mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
   
-  sh ~/bin/wagerrd_$ALIAS.sh
+  #sh ~/bin/wagerrd_$ALIAS.sh
   
   cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
 [Unit]
