@@ -142,7 +142,32 @@ for i in `seq 1 1 $MNCOUNT`; do
   
   sh ~/bin/wagerrd_$ALIAS.sh
   
-  
+  cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
+[Unit]
+Description=wagerr_$ALIAS service
+After=network.target
+[Service]
+User=root
+Group=root
+Type=forking
+#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
+ExecStart=sh ~/bin/wagerrd_$ALIAS.sh
+ExecStop=sh ~/bin/wagerr-cli_$ALIAS.sh stop
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=10s
+StartLimitInterval=120s
+StartLimitBurst=5
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  systemctl daemon-reload
+  sleep 3
+  systemctl start wagerr_$ALIAS.service
+  systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
+
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   sudo service cron reload
