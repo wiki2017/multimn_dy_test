@@ -44,27 +44,27 @@ fi
   #wget https://github.com/wagerr/wagerr/releases/download/v3.0.1/wagerr-3.0.1-x86_64-linux-gnu.tar.gz
   
   #wget https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip -O bootstrap.zip
-  export fileid=17u7ba0HSMJ40m1PIV3Fm63J_bdEHEWbS
-  export filename=wagerr-3.0.1-x86_64-linux-gnu.tar.gz
+  export fileid=1R5e37SKYZmOiOvTZYimQSiIKFcqTBDqJ
+  export filename=ion-4.0.0-x86_64-linux-gnu.tar.xz
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
-  export fileid=1UVA1imAOeEwsmdLCyRQ6EbkV2p-mkJ6M
+  export fileid=1ijuJ5w2Qk6pWqbdVRnnIxFttil1afwLS
   export filename=bootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  tar xvzf wagerr-3.0.1-x86_64-linux-gnu.tar.gz
+  tar -xvf ion-4.0.0-x86_64-linux-gnu.tar.xz
   
   
-  chmod +x wagerr-3.0.1/bin/*
-  sudo mv  wagerr-3.0.1/bin/* /usr/local/bin
-  rm -rf wagerr-3.0.1-x86_64-linux-gnu.tar.gz
+  chmod +x ion-4.0.0/bin/*
+  sudo mv  ion-4.0.0/bin/* /usr/local/bin
+  rm -rf ion-4.0.0-x86_64-linux-gnu.tar.xz
 
   sudo apt install -y ufw
   sudo ufw allow ssh/tcp
@@ -107,52 +107,52 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "The RPC port is $RPCPORT"
 
   ALIAS=${ALIAS}
-  CONF_DIR=~/.wagerr_$ALIAS
+  CONF_DIR=~/.ioncoin_$ALIAS
 
   # Create scripts
-  echo '#!/bin/bash' > ~/bin/wagerrd_$ALIAS.sh
-  echo "wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR "'$*' >> ~/bin/wagerrd_$ALIAS.sh
-  echo '#!/bin/bash' > ~/bin/wagerr-cli_$ALIAS.sh
-  echo "wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR "'$*' >> ~/bin/wagerr-cli_$ALIAS.sh
-  echo '#!/bin/bash' > ~/bin/wagerr-tx_$ALIAS.sh
-  echo "wagerr-tx -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR "'$*' >> ~/bin/wagerr-tx_$ALIAS.sh 
-  chmod 755 ~/bin/wagerr*.sh
+  echo '#!/bin/bash' > ~/bin/iond_$ALIAS.sh
+  echo "iond -daemon -conf=$CONF_DIR/ioncoin.conf -datadir=$CONF_DIR "'$*' >> ~/bin/iond_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/ion-cli_$ALIAS.sh
+  echo "ion-cli -conf=$CONF_DIR/ioncoin.conf -datadir=$CONF_DIR "'$*' >> ~/bin/ion-cli_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/ion-tx_$ALIAS.sh
+  echo "ion-tx -conf=$CONF_DIR/ioncoin.conf -datadir=$CONF_DIR "'$*' >> ~/bin/ion-tx_$ALIAS.sh 
+  chmod 755 ~/bin/ion*.sh
 
   mkdir -p $CONF_DIR
   unzip  bootstrap.zip -d $CONF_DIR
-  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> wagerr.conf_TEMP
-  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> wagerr.conf_TEMP
-  echo "rpcallowip=127.0.0.1" >> wagerr.conf_TEMP
-  echo "rpcport=$RPCPORT" >> wagerr.conf_TEMP
-  echo "listen=1" >> wagerr.conf_TEMP
-  echo "server=1" >> wagerr.conf_TEMP
-  echo "daemon=1" >> wagerr.conf_TEMP
-  echo "logtimestamps=1" >> wagerr.conf_TEMP
-  echo "maxconnections=256" >> wagerr.conf_TEMP
-  echo "masternode=1" >> wagerr.conf_TEMP
-  echo "" >> wagerr.conf_TEMP
+  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> ioncoin.conf_TEMP
+  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> ioncoin.conf_TEMP
+  echo "rpcallowip=127.0.0.1" >> ioncoin.conf_TEMP
+  echo "rpcport=$RPCPORT" >> ioncoin.conf_TEMP
+  echo "listen=1" >> ioncoin.conf_TEMP
+  echo "server=1" >> ioncoin.conf_TEMP
+  echo "daemon=1" >> ioncoin.conf_TEMP
+  echo "logtimestamps=1" >> ioncoin.conf_TEMP
+  echo "maxconnections=256" >> ioncoin.conf_TEMP
+  echo "masternode=1" >> ioncoin.conf_TEMP
+  echo "" >> ioncoin.conf_TEMP
 
-  echo "" >> wagerr.conf_TEMP
-  echo "port=$PORT" >> wagerr.conf_TEMP
-  echo "masternodeaddr=$IP:55002" >> wagerr.conf_TEMP
-  echo "masternodeprivkey=$PRIVKEY" >> wagerr.conf_TEMP
+  echo "" >> ioncoin.conf_TEMP
+  echo "port=$PORT" >> ioncoin.conf_TEMP
+  echo "masternodeaddr=$IP:55002" >> ioncoin.conf_TEMP
+  echo "masternodeprivkey=$PRIVKEY" >> ioncoin.conf_TEMP
   sudo ufw allow $PORT/tcp
 
-  mv wagerr.conf_TEMP $CONF_DIR/wagerr.conf
+  mv ioncoin.conf_TEMP $CONF_DIR/ioncoin.conf
   
-  sh ~/bin/wagerrd_$ALIAS.sh
+  sh ~/bin/iond_$ALIAS.sh
   
-  cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
+  cat << EOF > /etc/systemd/system/ion_$ALIAS.service
 [Unit]
-Description=wagerr_$ALIAS service
+Description=ion_$ALIAS service
 After=network.target
 [Service]
 User=root
 Group=root
 Type=forking
 #PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
-ExecStart=/usr/local/bin/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
-ExecStop=/usr/local/bin/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
+ExecStart=/usr/local/bin/iond -daemon -conf=$CONF_DIR/ioncoin.conf -datadir=$CONF_DIR
+ExecStop=/usr/local/bin/ion-cli -conf=$CONF_DIR/ioncoin.conf -datadir=$CONF_DIR stop
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
@@ -165,8 +165,8 @@ EOF
 
   systemctl daemon-reload
   sleep 10
-  systemctl start wagerr_$ALIAS.service
-  systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
+  systemctl start ion_$ALIAS.service
+  systemctl enable ion_$ALIAS.service >/dev/null 2>&1
 
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
