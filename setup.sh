@@ -164,7 +164,7 @@ WantedBy=multi-user.target
 EOF
 
   systemctl daemon-reload
-  sleep 3
+  sleep 10
   systemctl start wagerr_$ALIAS.service
   systemctl enable wagerr_$ALIAS.service >/dev/null 2>&1
 
