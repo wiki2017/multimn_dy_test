@@ -110,7 +110,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   CONF_DIR=~/.wagerr_$ALIAS
 
   # Create scripts
-  echo '#!/bin/bash' > ~/bin/wagerr_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/wagerrd_$ALIAS.sh
   echo "wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR "'$*' >> ~/bin/wagerrd_$ALIAS.sh
   echo '#!/bin/bash' > ~/bin/wagerr-cli_$ALIAS.sh
   echo "wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR "'$*' >> ~/bin/wagerr-cli_$ALIAS.sh
@@ -143,42 +143,8 @@ for i in `seq 1 1 $MNCOUNT`; do
   sh ~/bin/wagerrd_$ALIAS.sh
   
   
-  function configure_systemd() {
-  cat << EOF > /etc/systemd/system/wagerr_$ALIAS.service
-[Unit]
-Description=wagerr_$ALIAS service
-After=network.target
-[Service]
-User=root
-Group=root
-Type=forking
-PIDFile=$CONF_DIR/$wagerr_$ALIAS.pid
-ExecStart=$CONF_DIR/wagerrd -daemon -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR
-ExecStop=$CONF_DIR/wagerr-cli -conf=$CONF_DIR/wagerr.conf -datadir=$CONF_DIR stop
-Restart=always
-PrivateTmp=true
-TimeoutStopSec=60s
-TimeoutStartSec=10s
-StartLimitInterval=120s
-StartLimitBurst=5
-[Install]
-WantedBy=multi-user.target
-EOF
-
-  systemctl daemon-reload
-  sleep 5
-  systemctl start wagerr_$ALIAS.service
-  systemctl enable wagerr_$ALIAS.service
-  
-  if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
-    echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
-    echo -e "${GREEN}systemctl start $COIN_NAME.service"
-    echo -e "systemctl status $COIN_NAME.service"
-    echo -e "less /var/log/syslog${NC}"
-    exit 1
-  fi
-}
-
-configure_systemd
+  (crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
+	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
+	   sudo service cron reload
   
 done
