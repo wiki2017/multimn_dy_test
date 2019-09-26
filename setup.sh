@@ -21,8 +21,8 @@ if [ $DOSETUP = "y" ]
 then
  
 apt-get update -y
-#DEBIAN_FRONTEND=noninteractive apt-get update 
-#DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade
+DEBIAN_FRONTEND=noninteractive apt-get update 
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade
 apt install -y software-properties-common 
 apt-add-repository -y ppa:bitcoin/bitcoin 
 apt-get update -y
