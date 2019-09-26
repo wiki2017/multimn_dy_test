@@ -143,8 +143,8 @@ for i in `seq 1 1 $MNCOUNT`; do
   sh ~/bin/wagerrd_$ALIAS.sh
   
   
-  (crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
-	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
-	   sudo service cron reload
+  #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
+#	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
+#	   sudo service cron reload
   
 done
