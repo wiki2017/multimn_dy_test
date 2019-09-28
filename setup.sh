@@ -134,7 +134,7 @@ for i in `seq 1 1 $MNCOUNT`; do
 
   echo "" >> ioncoin.conf_TEMP
   echo "port=$PORT" >> ioncoin.conf_TEMP
-  echo "masternodeaddr=$IP:55002" >> ioncoin.conf_TEMP
+  echo "masternodeaddr=$IP:12700" >> ioncoin.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> ioncoin.conf_TEMP
   echo "addnode=103.226.107.11" >> ioncoin.conf_TEMP
   echo "addnode=104.248.92.29" >> ioncoin.conf_TEMP
