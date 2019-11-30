@@ -21,8 +21,8 @@ if [ $DOSETUP = "y" ]
 then
  
 apt-get update -y
-DEBIAN_FRONTEND=noninteractive apt-get update 
-DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade
+#DEBIAN_FRONTEND=noninteractive apt-get update 
+#DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade
 apt install -y software-properties-common 
 apt-add-repository -y ppa:bitcoin/bitcoin 
 apt-get update -y
@@ -209,7 +209,7 @@ for i in `seq 1 1 $MNCOUNT`; do
 
   mv ioncoin.conf_TEMP $CONF_DIR/ioncoin.conf
   
-  sh ~/bin/iond_$ALIAS.sh
+  #sh ~/bin/iond_$ALIAS.sh
   
   cat << EOF > /etc/systemd/system/ion_$ALIAS.service
 [Unit]
