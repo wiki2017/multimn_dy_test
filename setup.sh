@@ -53,7 +53,7 @@ fi
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
   export fileid=1tQE0GApdB4nW1yu2M8AqpCS_CtgdLXKJ
-  export filename=bootstrap.zip
+  export filename=ibootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
@@ -119,7 +119,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   chmod 755 ~/bin/ion*.sh
 
   mkdir -p $CONF_DIR
-  unzip  bootstrap.zip -d $CONF_DIR
+  unzip  ibootstrap.zip -d $CONF_DIR
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> ioncoin.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> ioncoin.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> ioncoin.conf_TEMP
