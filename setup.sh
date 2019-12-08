@@ -226,8 +226,8 @@ Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
 TimeoutStartSec=10s
-StartLimitInterval=120s
-StartLimitBurst=5
+StartLimitInterval=0
+#StartLimitBurst=5
 [Install]
 WantedBy=multi-user.target
 EOF
