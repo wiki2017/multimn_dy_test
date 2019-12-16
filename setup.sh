@@ -223,7 +223,7 @@ ExecStart=/usr/local/bin/iond -daemon -conf=$CONF_DIR/ioncoin.conf -datadir=$CON
 ExecStop=/usr/local/bin/ion-cli -conf=$CONF_DIR/ioncoin.conf -datadir=$CONF_DIR stop
 Restart=always
 PrivateTmp=true
-RestartSec=1
+TimeoutStartSec=10m
 StartLimitInterval=0
 [Install]
 WantedBy=multi-user.target
