@@ -152,7 +152,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   
   #sh ~/bin/iond_$ALIAS.sh
   
-  cat << EOF > /etc/systemd/system/ion_$ALIAS.service
+  cat << EOF > /etc/systemd/system/streamies_$ALIAS.service
 [Unit]
 Description=streamies_$ALIAS service
 After=network.target
