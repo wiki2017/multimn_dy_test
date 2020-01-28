@@ -45,7 +45,7 @@ fi
   
   #wget https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip -O bootstrap.zip
   export fileid=1cCOIb-Xqs_MxsIPiwEAtvQps_6R1Ww13
-  export filename=ion-4.0.0-x86_64-linux-gnu.tar.xz
+  export filename=Streamies-2.0.0-x86_64-pc-linux-gnu.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
