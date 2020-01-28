@@ -67,11 +67,7 @@ fi
   sudo cp  streamiesd /usr/local/bin
   sudo cp  streamies-cli /usr/local/bin
   rm -rf Streamies-2.0.0-x86_64-pc-linux-gnu.zip
-  rm -rf streamiesd
-  rm -rf Streamies-cli
-  rm -rf Streamies-qt
-  rm -rf Streamies-tx
-
+  
   sudo apt install -y ufw
   sudo ufw allow ssh/tcp
   sudo ufw limit ssh/tcp
