@@ -33,12 +33,12 @@ libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip
 
 
 
-fallocate -l 16G /iswapfile
-chmod 600 /iswapfile
-mkswap /iswapfile
-swapon /iswapfile
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
 swapon -s
-echo "/iswapfile none swap sw 0 0" >> /etc/fstab
+echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
 fi
   #wget https://github.com/wagerr/wagerr/releases/download/v3.0.1/wagerr-3.0.1-x86_64-linux-gnu.tar.gz
@@ -53,7 +53,7 @@ fi
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
   #export fileid=1q6w9x77bgXNtDaF1acGwYm6IEIEK7eCJ
-  #export filename=ibootstrap.zip
+  #export filename=bootstrap.zip
   #wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
   #   | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
@@ -119,7 +119,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   chmod 755 ~/bin/streamies*.sh
 
   mkdir -p $CONF_DIR
-  #unzip  ibootstrap.zip -d $CONF_DIR
+  #unzip  bootstrap.zip -d $CONF_DIR
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> streamies.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> streamies.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> streamies.conf_TEMP
