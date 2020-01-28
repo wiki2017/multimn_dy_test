@@ -42,15 +42,15 @@ echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
 fi
   #wget https://github.com/wagerr/wagerr/releases/download/v3.0.1/wagerr-3.0.1-x86_64-linux-gnu.tar.gz
-  
+  wget https://github.com/Streamies/Streamies/releases/download/v2.0.0/Streamies-2.0.0-x86_64-pc-linux-gnu.zip
   #wget https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip -O bootstrap.zip
-  export fileid=1cCOIb-Xqs_MxsIPiwEAtvQps_6R1Ww13
-  export filename=Streamies-2.0.0-x86_64-pc-linux-gnu.zip
-  wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
-     | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
+  #export fileid=1cCOIb-Xqs_MxsIPiwEAtvQps_6R1Ww13
+  #export filename=Streamies-2.0.0-x86_64-pc-linux-gnu.zip
+  #wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
+  #   | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
-  wget --load-cookies cookies.txt -O $filename \
-     'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
+  #wget --load-cookies cookies.txt -O $filename \
+  #   'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
 
   #export fileid=1q6w9x77bgXNtDaF1acGwYm6IEIEK7eCJ
   #export filename=bootstrap.zip
