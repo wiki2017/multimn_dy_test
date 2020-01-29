@@ -161,7 +161,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   
   sudo ufw allow $PORT/tcp
 
-  mv streamies.conf_TEMP $CONF_DIR/streamies.conf.conf
+  mv streamies.conf_TEMP $CONF_DIR/streamies.conf
   
   #sh ~/bin/iond_$ALIAS.sh
   
