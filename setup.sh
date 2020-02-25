@@ -78,6 +78,10 @@ fi
   sudo cp  streamiesd /usr/local/bin
   sudo cp  streamies-cli /usr/local/bin
   rm -rf Streamies-2.2.0-x86_64-pc-linux-gnu.zip
+  rm -rf streamies-cli
+  rm -rf streamiesd
+  rm -rf streamies-tx
+  rm -rf streamies-qt
   
   sudo apt install -y ufw
   sudo ufw allow ssh/tcp
@@ -187,6 +191,8 @@ EOF
   sleep 10
   systemctl start streamies_$ALIAS.service
   systemctl enable streamies_$ALIAS.service >/dev/null 2>&1
+ 
+  rm -rf setup.sh
 
   #(crontab -l 2>/dev/null; echo "@reboot sh ~/bin/wagerrd_$ALIAS.sh") | crontab -
 #	   (crontab -l 2>/dev/null; echo "@reboot sh /root/bin/wagerrd_$ALIAS.sh") | crontab -
