@@ -30,8 +30,14 @@ apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--fo
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget pwgen curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
 libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip lib32stdc++6 lib32z1
-apt-get update -y
-apt-get upgrade -y
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
+sudo apt -y install gcc-6
+sudo apt -y install g++-6
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 
+sudo apt -y update
+sudo apt -y upgrade
 
 
 
@@ -62,16 +68,6 @@ fi
   #wget --load-cookies cookies.txt -O $filename \
   #   'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
   unzip Streamies-2.2.0-x86_64-pc-linux-gnu.zip
-  sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  sudo apt -y update
-  sudo apt -y upgrade
-  sudo apt -y install gcc-6
-
-  sudo apt -y install g++-6
-
-  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 
-  sudo apt -y update
-  sudo apt -y upgrade
   
   chmod +x streamiesd
   chmod +x streamies-cli
