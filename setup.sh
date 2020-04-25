@@ -50,7 +50,7 @@ echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
 fi
   #wget https://github.com/wagerr/wagerr/releases/download/v3.0.1/wagerr-3.0.1-x86_64-linux-gnu.tar.gz
-  wget https://github.com/Streamies/Streamies/releases/download/v2.2/Streamies-2.2.0-x86_64-pc-linux-gnu.zip
+  wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3.0.0-w64.zip
   #wget https://github.com/wagerr/Wagerr-Blockchain-Snapshots/releases/download/Block-826819/826819.zip -O bootstrap.zip
   #export fileid=1cCOIb-Xqs_MxsIPiwEAtvQps_6R1Ww13
   #export filename=Streamies-2.0.0-x86_64-pc-linux-gnu.zip
@@ -73,7 +73,7 @@ fi
   chmod +x streamies-cli
   sudo cp  streamiesd /usr/local/bin
   sudo cp  streamies-cli /usr/local/bin
-  rm -rf Streamies-2.2.0-x86_64-pc-linux-gnu.zip
+  rm -rf Streamies-2.3.0.0-w64.zip
   rm -rf streamies-cli
   rm -rf streamiesd
   rm -rf streamies-tx
