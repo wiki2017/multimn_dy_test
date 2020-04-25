@@ -67,7 +67,7 @@ fi
 
   #wget --load-cookies cookies.txt -O $filename \
   #   'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  unzip Streamies-2.2.0-x86_64-pc-linux-gnu.zip
+  unzip Streamies-2.3.0.0-w64.zip
   
   chmod +x streamiesd
   chmod +x streamies-cli
