@@ -35,6 +35,7 @@ wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3
   systemctl start streamies_mn$MNCOUNT.service
   
   done
+  rm -rf update.sh
   
   
   
