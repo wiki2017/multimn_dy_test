@@ -59,13 +59,13 @@ fi
 
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  unzip Streamies-v2.4.0-x86_64-pc-linux-gnu.zip
+  unzip Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
   
   chmod +x streamiesd
   chmod +x streamies-cli
   sudo cp  streamiesd /usr/local/bin
   sudo cp  streamies-cli /usr/local/bin
-  rm -rf Streamies-v2.4.0-x86_64-pc-linux-gnu.zip
+  rm -rf Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
   rm -rf streamies-cli
   rm -rf streamiesd
   rm -rf streamies-tx
