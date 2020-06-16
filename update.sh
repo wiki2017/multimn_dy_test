@@ -1,3 +1,4 @@
+#/bin/bash
 wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
   
   export fileid=1Lz5mWPetZ2lGCunEOMzVtvVb6u7878ln
