@@ -20,29 +20,18 @@ wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3
   rm -rf streamies-qt
   rm -rf streamiesd.1
   
-  echo ""
-  echo "How many nodes do you want to create on this server? [min:1 Max:20]  followed by [ENTER]:"
-  read MNCOUNT
   
-  for i in `seq 1 1 $MNCOUNT`; do
-  echo ""
-  echo "Enter alias for new node"
-  read ALIAS  
+  systemctl stop streamies_mn1.service
   
-  ALIAS=${ALIAS}
-  CONF_DIR=~/.streamies_$ALIAS
-
-  systemctl stop streamies_$ALIAS.service
-  
-  rm -rf $CONF_DIR/blocks
-  rm -rf $CONF_DIR/chainstate
-  rm -rf $CONF_DIR/sporks
-  rm -rf $CONF_DIR/zerocoin
-  rm -rf $CONF_DIR/.lock
-  rm -rf $CONF_DIR/*.dat
-  unzip  bootstrap.zip -d $CONF_DIR
+  rm -rf ~/.streamies_mn1/blocks
+  rm -rf ~/.streamies_mn1/chainstate
+  rm -rf ~/.streamies_mn1/sporks
+  rm -rf ~/.streamies_mn1/zerocoin
+  rm -rf ~/.streamies_mn1/.lock
+  rm -rf ~/.streamies_mn1/*.dat
+  unzip  bootstrap.zip -d ~/.streamies_mn1
   systemctl start streamies_$ALIAS.serive
   
-  done
+  
   
   
