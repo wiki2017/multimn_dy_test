@@ -30,7 +30,7 @@ wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3
   rm -rf ~/.streamies_mn1/.lock
   rm -rf ~/.streamies_mn1/*.dat
   unzip  bootstrap.zip -d ~/.streamies_mn1
-  systemctl start streamies_$ALIAS.serive
+  systemctl start streamies_mn1.serive
   
   
   
