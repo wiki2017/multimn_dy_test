@@ -20,10 +20,10 @@ wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3
   rm -rf streamies-qt
   rm -rf streamiesd.1
   
+  echo ""
   echo "How many nodes do you want to create on this server? [min:1 Max:20]  followed by [ENTER]:"
-read MNCOUNT
-for i in `seq 1 1 $MNCOUNT`; do
-
+  read MNCOUNT
+  
   for i in `seq 1 1 $MNCOUNT`; do
   echo ""
   echo "Enter alias for new node"
