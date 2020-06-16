@@ -5,3 +5,6 @@
 
 `bash setup.sh`
  
+ `wget https://github.com/j05eph2000/multimnstest/blob/master/update.sh`
+ 
+ `bash update.sh`
