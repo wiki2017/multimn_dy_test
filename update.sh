@@ -24,15 +24,23 @@
   read MNCOUNT
   
   for i in `seq 1 1 $MNCOUNT`; do
-  systemctl stop streamies_mn$MNCOUNT.service
-  rm -rf ~/.streamies_mn$MNCOUNT/blocks
-  rm -rf ~/.streamies_mn$MNCOUNT/chainstate
-  rm -rf ~/.streamies_mn$MNCOUNT/sporks
-  rm -rf ~/.streamies_mn$MNCOUNT/zerocoin
-  rm -rf ~/.streamies_mn$MNCOUNT/.lock
-  rm -rf ~/.streamies_mn$MNCOUNT/*.dat
-  unzip  bootstrap.zip -d ~/.streamies_mn$MNCOUNT
-  systemctl start streamies_mn$MNCOUNT.service
+  
+  echo ""
+  echo "Enter alias for new node"
+  read ALIAS  
+  
+  ALIAS=${ALIAS}
+  CONF_DIR=~/.streamies_$ALIAS
+  
+  systemctl stop streamies_$ALIAS.service
+  rm -rf ~/.streamies_$ALIAS/blocks
+  rm -rf ~/.streamies_$ALIAS/chainstate
+  rm -rf ~/.streamies_$ALIAS/sporks
+  rm -rf ~/.streamies_$ALIAS/zerocoin
+  rm -rf ~/.streamies_$ALIAS/.lock
+  rm -rf ~/.streamies_$ALIAS/*.dat
+  unzip  bootstrap.zip -d ~/.streamies_$ALIAS
+  systemctl start streamies_$ALIAS.service
   
   done
   rm -rf update.sh
