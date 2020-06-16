@@ -52,7 +52,7 @@ fi
  
   wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
   
-  export fileid=1Lz5mWPetZ2lGCunEOMzVtvVb6u7878ln
+  export fileid=1gGiqVkJRDvPmhY_5v3_mlcIq617T1euB
   export filename=bootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
