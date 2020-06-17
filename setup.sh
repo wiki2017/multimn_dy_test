@@ -71,6 +71,9 @@ fi
   rm -rf streamies-tx
   rm -rf streamies-qt
   rm -rf streamiesd.1
+  rm -rf streamies-cli.1
+  rm -rf streamies-tx.1
+  rm -rf streamies-qt.1
   
   sudo apt install -y ufw
   sudo ufw allow ssh/tcp
