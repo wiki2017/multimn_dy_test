@@ -1,5 +1,5 @@
 #/bin/bash
-  wget https://github.com/Streamies/Streamies/releases/download/v2.3/Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
+  wget https://github.com/Streamies/Streamies/releases/download/v2.4.1/Streamies-v2.4.1-x86_64-pc-linux-gnu.zip
   
   export fileid=1gGiqVkJRDvPmhY_5v3_mlcIq617T1euB
   export filename=bootstrap.zip
@@ -8,18 +8,21 @@
 
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  unzip Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
+  unzip Streamies-v2.4.1-x86_64-pc-linux-gnu.zip
   
   chmod +x streamiesd
   chmod +x streamies-cli
   sudo cp  streamiesd /usr/local/bin
   sudo cp  streamies-cli /usr/local/bin
-  rm -rf Streamies-2.3.0.0-x86_64-pc-linux-gnu.zip
+  rm -rf Streamies-v2.4.1-x86_64-pc-linux-gnu.zip
   rm -rf streamies-cli
   rm -rf streamiesd
   rm -rf streamies-tx
   rm -rf streamies-qt
   rm -rf streamiesd.1
+  rm -rf streamies-cli.1
+  rm -rf streamies-tx.1
+  rm -rf streamies-qt.1
   echo "How many nodes do you want to create on this server? [min:1 Max:20]  followed by [ENTER]:"
   read MNCOUNT
   
@@ -44,6 +47,7 @@
   
   done
   rm -rf update.sh
+  rm -rf bootstrap.zip
   
   
   
