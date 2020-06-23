@@ -156,13 +156,13 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "port=$PORT" >> $CONFIG_FILE
   echo "masternodeaddr=$IP:$COIN_PORT" >> $CONFIG_FILE
   echo "masternodeprivkey=$PRIVKEY" >> $CONFIG_FILE
-  echo "addnode=149.28.141.28" >> $CONFIG_FILE
-  echo "addnode=45.77.41.234" >> $CONFIG_FILE
-  echo "addnode=95.217.140.128" >> $CONFIG_FILE
-  echo "addnode=95.217.140.129" >> $CONFIG_FILE
-  echo "addnode=95.217.140.130" >> $CONFIG_FILE
-  echo "addnode=95.217.140.131" >> $CONFIG_FILE
-  echo "addnode=95.217.140.132" >> $CONFIG_FILE
+  #echo "addnode=149.28.141.28" >> $CONFIG_FILE
+  #echo "addnode=45.77.41.234" >> $CONFIG_FILE
+  #echo "addnode=95.217.140.128" >> $CONFIG_FILE
+  #echo "addnode=95.217.140.129" >> $CONFIG_FILE
+  #echo "addnode=95.217.140.130" >> $CONFIG_FILE
+  #echo "addnode=95.217.140.131" >> $CONFIG_FILE
+  #echo "addnode=95.217.140.132" >> $CONFIG_FILE
   sudo ufw allow $PORT/tcp
   mv $CONFIG_FILE $CONF_DIR/$CONFIG_FILE
   
