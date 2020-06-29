@@ -1,5 +1,5 @@
 #/bin/bash
-  wget https://github.com/Streamies/Streamies/releases/download/v2.4.1/Streamies-v2.4.1-x86_64-pc-linux-gnu.zip
+  wget https://github.com/Streamies/Streamies/releases/download/v2.4.2/Streamies-v2.4.2-x86_64-pc-linux-gnu.zip
   
   export fileid=1gGiqVkJRDvPmhY_5v3_mlcIq617T1euB
   export filename=bootstrap.zip
@@ -8,7 +8,7 @@
 
   wget --load-cookies cookies.txt -O $filename \
      'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  unzip Streamies-v2.4.1-x86_64-pc-linux-gnu.zip
+  unzip Streamies-v2.4.2-x86_64-pc-linux-gnu.zip
   
   chmod +x streamiesd
   chmod +x streamies-cli
