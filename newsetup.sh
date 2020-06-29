@@ -5,7 +5,7 @@ COIN_CLI='streamies-cli'
 COIN_QT='streamies-qt'
 COIN_TX='streamies-tx'
 CONFIG_FILE='streamies.conf'
-COIN_TGZ='https://github.com/Streamies/Streamies/releases/download/v2.4.1/Streamies-v2.4.1-x86_64-pc-linux-gnu.zip'
+COIN_TGZ='https://github.com/Streamies/Streamies/releases/download/v2.4.2/Streamies-v2.4.2-x86_64-pc-linux-gnu.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 
 COIN_PORT=55297
@@ -85,10 +85,10 @@ fi
   rm -rf $COIN_DAEMON
   rm -rf $COIN_TX
   rm -rf $COIN_QT
-  rm -rf $COIN_CLI.1
-  rm -rf $COIN_DAEMON.1
-  rm -rf $COIN_TX.1
-  rm -rf $COIN_QT.1
+  #rm -rf $COIN_CLI.1
+  #rm -rf $COIN_DAEMON.1
+  #rm -rf $COIN_TX.1
+  #rm -rf $COIN_QT.1
 
 
   sudo apt install -y ufw
