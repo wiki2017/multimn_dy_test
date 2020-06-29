@@ -14,7 +14,7 @@
   chmod +x streamies-cli
   sudo cp  streamiesd /usr/local/bin
   sudo cp  streamies-cli /usr/local/bin
-  rm -rf Streamies-v2.4.1-x86_64-pc-linux-gnu.zip
+  rm -rf Streamies-v2.4.2-x86_64-pc-linux-gnu.zip
   rm -rf streamies-cli
   rm -rf streamiesd
   rm -rf streamies-tx
