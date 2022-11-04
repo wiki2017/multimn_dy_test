@@ -139,7 +139,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   chmod 755 ~/bin/$COIN_DAEMON$ALIAS.sh
   chmod 755 ~/bin/$COIN_CLI$ALIAS.sh
   mkdir -p $CONF_DIR
-  unzip  bootstrap.zip -d $CONF_DIR
+  # unzip  bootstrap.zip -d $CONF_DIR
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> $CONFIG_FILE
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> $CONFIG_FILE
   echo "rpcallowip=127.0.0.1" >> $CONFIG_FILE
