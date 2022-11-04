@@ -5,7 +5,7 @@ COIN_CLI='dynamic-cli'
 COIN_QT='dynamic-qt'
 COIN_TX='dynamic-tx'
 CONFIG_FILE='dynamic.conf'
-COIN_TGZ='https://github.com/duality-solutions/Dynamic/releases/download/v2.5.0.0/Dynamic-2.5.0.0-Linux-x64.tar.gz'
+COIN_TGZ='Dynamic-2.5.0.0-Linux-x64.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 
 COIN_PORT=33300
@@ -75,6 +75,7 @@ fi
   
   #wget --load-cookies cookies.txt -O $filename \
   #   'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
+  wget https://github.com/duality-solutions/Dynamic/releases/download/v2.5.0.0/Dynamic-2.5.0.0-Linux-x64.tar.gz
   tar -zxvf $COIN_TGZ
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
