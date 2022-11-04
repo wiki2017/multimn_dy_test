@@ -67,14 +67,14 @@ echo "/swapfile none swap sw 0 0" >> /etc/fstab
 fi
 
   #wget -d $COIN_TGZ
-  #export fileid=0B-FjWl5F1zczaEQ4VURMZV9EWWM
-  #export filename=bootstrap.zip
-  #wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
-  #   | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
+  export fileid=1DfgPH_HLu_rwjFIVSyYnkvjYbSY8UKh2
+  export filename=bootstrap.zip
+  wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
+     | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
 
   
-  #wget --load-cookies cookies.txt -O $filename \
-  #   'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
+  wget --load-cookies cookies.txt -O $filename \
+     'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
   wget https://github.com/duality-solutions/Dynamic/releases/download/v2.5.0.0/Dynamic-2.5.0.0-Linux-x64.tar.gz
   tar -zxvf $COIN_TGZ
   chmod +x $COIN_DAEMON
