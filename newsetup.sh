@@ -75,12 +75,12 @@ fi
   
   #wget --load-cookies cookies.txt -O $filename \
   #   'https://docs.google.com/uc?export=download&id='$fileid'&confirm='$(<confirm.txt)
-  tar zxvf $COIN_ZIP
+  tar -zxvf $COIN_TGZ
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   sudo cp  $COIN_DAEMON /usr/local/bin
   sudo cp  $COIN_CLI /usr/local/bin
-  rm -rf $COIN_ZIP
+  rm -rf $COIN_TGZ
   rm -rf $COIN_CLI
   rm -rf $COIN_DAEMON
   rm -rf $COIN_TX
