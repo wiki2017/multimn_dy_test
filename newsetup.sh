@@ -1,14 +1,14 @@
 #/bin/bash
-COINNAME='streamies'
-COIN_DAEMON='streamiesd'
-COIN_CLI='streamies-cli'
-COIN_QT='streamies-qt'
-COIN_TX='streamies-tx'
-CONFIG_FILE='streamies.conf'
-COIN_TGZ='https://github.com/Streamies/Streamies/releases/download/v2.4.2/Streamies-v2.4.2-x86_64-pc-linux-gnu.zip'
+COINNAME='dynamic'
+COIN_DAEMON='dynamicd'
+COIN_CLI='dynamic-cli'
+COIN_QT='dynamic-qt'
+COIN_TX='dynamic-tx'
+CONFIG_FILE='dynamic.conf'
+COIN_TGZ='https://github.com/duality-solutions/Dynamic/releases/download/v2.5.0.0/Dynamic-2.5.0.0-Linux-x64.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 
-COIN_PORT=55297
+COIN_PORT=33300
 
 
 #/bin/bash
@@ -67,7 +67,7 @@ echo "/swapfile none swap sw 0 0" >> /etc/fstab
 fi
 
   wget -d $COIN_TGZ
-  export fileid=1gGiqVkJRDvPmhY_5v3_mlcIq617T1euB
+  export fileid=0B-FjWl5F1zczaEQ4VURMZV9EWWM
   export filename=bootstrap.zip
   wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \
      | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1/p' > confirm.txt
@@ -156,13 +156,55 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "port=$PORT" >> $CONFIG_FILE
   echo "masternodeaddr=$IP:$COIN_PORT" >> $CONFIG_FILE
   echo "masternodeprivkey=$PRIVKEY" >> $CONFIG_FILE
-  #echo "addnode=149.28.141.28" >> $CONFIG_FILE
-  #echo "addnode=45.77.41.234" >> $CONFIG_FILE
-  #echo "addnode=95.217.140.128" >> $CONFIG_FILE
-  #echo "addnode=95.217.140.129" >> $CONFIG_FILE
-  #echo "addnode=95.217.140.130" >> $CONFIG_FILE
-  #echo "addnode=95.217.140.131" >> $CONFIG_FILE
-  #echo "addnode=95.217.140.132" >> $CONFIG_FILE
+  echo "addnode=[2001:41d0:700:47e::]:33300" >> $CONFIG_FILE
+  echo "addnode=[2a01:e0a:ee:fb30:9a90:96ff:fed6:b450]:33300" >> $CONFIG_FILE
+  echo "addnode=116.203.56.43:33300" >> $CONFIG_FILE
+  echo "addnode=135.181.52.135:33300" >> $CONFIG_FILE
+  echo "addnode=136.243.29.195:33300" >> $CONFIG_FILE
+  echo "addnode=159.69.83.47:33300" >> $CONFIG_FILE
+  echo "addnode=161.97.141.76:33300" >> $CONFIG_FILE
+  echo "addnode=168.119.80.4:33300" >> $CONFIG_FILE
+  echo "addnode=168.119.87.193:33300" >> $CONFIG_FILE
+  echo "addnode=168.119.87.195:33300" >> $CONFIG_FILE
+  echo "addnode=176.9.210.2:33300" >> $CONFIG_FILE
+  echo "addnode=178.62.5.100:33300" >> $CONFIG_FILE
+  echo "addnode=178.63.121.129:33300" >> $CONFIG_FILE
+  echo "addnode=178.63.235.193:33300" >> $CONFIG_FILE
+  echo "addnode=188.40.163.3:33300" >> $CONFIG_FILE
+  echo "addnode=188.40.184.65:33300" >> $CONFIG_FILE
+  echo "addnode=192.210.228.215:33300" >> $CONFIG_FILE
+  echo "addnode=195.201.207.24:33300" >> $CONFIG_FILE
+  echo "addnode=51.15.129.216:33300" >> $CONFIG_FILE
+  echo "addnode=51.15.46.203:33300" >> $CONFIG_FILE
+  echo "addnode=51.15.51.189:33300" >> $CONFIG_FILE
+  echo "addnode=51.15.60.147:33300" >> $CONFIG_FILE
+  echo "addnode=51.15.61.31:33300" >> $CONFIG_FILE
+  echo "addnode=8.9.6.89:33300" >> $CONFIG_FILE
+  echo "addnode=88.99.11.0:33300" >> $CONFIG_FILE
+  echo "addnode=88.99.11.2:33300" >> $CONFIG_FILE
+  echo "addnode=88.99.11.3:33300" >> $CONFIG_FILE
+  echo "addnode=94.130.184.73:33300" >> $CONFIG_FILE
+  echo "addnode=95.216.109.132:33300" >> $CONFIG_FILE
+  echo "addnode=95.216.79.232:33300" >> $CONFIG_FILE
+  echo "addnode=95.217.48.101:33300" >> $CONFIG_FILE
+  echo "addnode=95.217.48.102:33300" >> $CONFIG_FILE
+  echo "addnode=164.68.125.170" >> $CONFIG_FILE
+  echo "addnode=155.138.218.41" >> $CONFIG_FILE
+  echo "addnode=116.202.47.198" >> $CONFIG_FILE
+  echo "addnode=108.61.144.241" >> $CONFIG_FILE
+  echo "addnode=217.67.229.223" >> $CONFIG_FILE
+  echo "addnode=190.96.1.19" >> $CONFIG_FILE
+  echo "addnode=86.122.44.179" >> $CONFIG_FILE
+  echo "addnode=216.128.140.18" >> $CONFIG_FILE
+  echo "addnode=190.96.1.19" >> $CONFIG_FILE
+  echo "addnode=51.15.120.57" >> $CONFIG_FILE
+  echo "addnode=172.112.30.148" >> $CONFIG_FILE
+  echo "addnode=46.123.236.190" >> $CONFIG_FILE
+  echo "addnode=174.4.72.251" >> $CONFIG_FILE
+  echo "addnode=172.111.162.167" >> $CONFIG_FILE
+  echo "addnode=69.14.75.223" >> $CONFIG_FILE
+  echo "addnode=188.27.146.159" >> $CONFIG_FILE
+ 
   sudo ufw allow $PORT/tcp
   mv $CONFIG_FILE $CONF_DIR/$CONFIG_FILE
   
